@@ -1,22 +1,37 @@
-// PLAN OF ATTACK:
-
-// Button doesn't seem to activate anything, fix that
+// Declares a variable that will be used in conjunction with a mouse click
 var generateBtn = document.querySelector("#generate");
+
+// Declare variables to be used globally. 
+let passLength;
+let passLowercase;
+let passUppercase;
+let passNumeric;
+let passSpecial;
+
 function testprompt()  {
-    var passLength = prompt("How many characters does your password need to be? \n(Enter a value from 8 to 128)", "");
-    console.log(passLength);
-    var passLowercase = confirm("Include lowercase characters? \nPress OK for yes, Cancel for no", "");
-    console.log(passLowercase);
-    var passUppercase = confirm("Include uppercase characters? \nPress OK for yes, Cancel for no", "");
-    console.log(passUppercase);
-    var passNumeric = confirm("Include numeric characters? \nPress OK for yes, Cancel for no", "");
-    console.log(passNumeric);
-    var passSpecial = confirm("Include special characters? (For example: !#$%&, etc.) \nPress OK for yes, Cancel for no", "");
-    console.log(passSpecial);
-};
+    while (isNaN(passLength) || passLength > 128 || passLength < 8) {
+        passLength = prompt("How many characters does your password need to be? \n(Enter a number from 8 to 128)", "");
+    }
+}
+        // alert("Invalid input. Please enter a number from 8 to 128.");
+    // console.log(passLength);
+    // let passLowercase = confirm("Include lowercase characters? \nPress OK for yes, Cancel for no", "");
+    // console.log(passLowercase);
+    // let passUppercase = confirm("Include uppercase characters? \nPress OK for yes, Cancel for no", "");
+    // console.log(passUppercase);
+    // let passNumeric = confirm("Include numeric characters? \nPress OK for yes, Cancel for no", "");
+    // console.log(passNumeric);
+    // let passSpecial = confirm("Include special characters? (For example: !#$%&, etc.) \nPress OK for yes, Cancel for no", "");
+    // console.log(passSpecial);
+
 generateBtn.addEventListener("click", testprompt);
 
-// Add PROMPTs for password criteria:
+
+
+// PLAN OF ATTACK:
+
+// FIXED! Button doesn't seem to activate anything, fix that
+// FIXED! Add PROMPTs for password criteria:
 //    128 character > Length >= 8 characters
 //    Whether or not to include: lowercase, uppercase, numeric, or special chars.
 // Ensure each prompt is validated (possible ===, ||, &&, type stuff)
