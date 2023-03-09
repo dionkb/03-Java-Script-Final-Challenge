@@ -1,8 +1,11 @@
-// Assignment Code
+// This will pull the id="generate" portion of the html and store it in a variable
+// for use at a later time (See "Add event listener" below).
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Sets up a function called writePassword to be called when the user 
+// clicks the "Generate Password" button
 function writePassword() {
+  // 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
