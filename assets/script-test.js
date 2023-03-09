@@ -3,8 +3,17 @@
 // Button doesn't seem to activate anything, fix that
 var generateBtn = document.querySelector("#generate");
 function testprompt()  {
-    prompt("Test", "");
-}
+    var passLength = prompt("How many characters does your password need to be? \n(Enter a value from 8 to 128)", "");
+    console.log(passLength);
+    var passLowercase = confirm("Include lowercase characters? \nPress OK for yes, Cancel for no", "");
+    console.log(passLowercase);
+    var passUppercase = confirm("Include uppercase characters? \nPress OK for yes, Cancel for no", "");
+    console.log(passUppercase);
+    var passNumeric = confirm("Include numeric characters? \nPress OK for yes, Cancel for no", "");
+    console.log(passNumeric);
+    var passSpecial = confirm("Include special characters? (For example: !#$%&, etc.) \nPress OK for yes, Cancel for no", "");
+    console.log(passSpecial);
+};
 generateBtn.addEventListener("click", testprompt);
 
 // Add PROMPTs for password criteria:
