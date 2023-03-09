@@ -12,17 +12,24 @@ function testprompt()  {
     while (isNaN(passLength) || passLength > 128 || passLength < 8) {
         passLength = prompt("How many characters does your password need to be? \n(Enter a number from 8 to 128)", "");
     }
-}
-        // alert("Invalid input. Please enter a number from 8 to 128.");
-    // console.log(passLength);
-    // let passLowercase = confirm("Include lowercase characters? \nPress OK for yes, Cancel for no", "");
-    // console.log(passLowercase);
-    // let passUppercase = confirm("Include uppercase characters? \nPress OK for yes, Cancel for no", "");
-    // console.log(passUppercase);
-    // let passNumeric = confirm("Include numeric characters? \nPress OK for yes, Cancel for no", "");
-    // console.log(passNumeric);
-    // let passSpecial = confirm("Include special characters? (For example: !#$%&, etc.) \nPress OK for yes, Cancel for no", "");
-    // console.log(passSpecial);
+    // if (!passLength) {
+        // return;
+    // } else {
+    console.log(passLength);
+    let passLowercase = confirm("Include lowercase characters? \nPress OK for yes, Cancel for no", "");
+    console.log(passLowercase);
+    let passUppercase = confirm("Include uppercase characters? \nPress OK for yes, Cancel for no", "");
+    console.log(passUppercase);
+    let passNumeric = confirm("Include numeric characters? \nPress OK for yes, Cancel for no", "");
+    console.log(passNumeric);
+    let passSpecial = confirm("Include special characters? (For example: !#$%&, etc.) \nPress OK for yes, Cancel for no", "");
+    console.log(passSpecial);
+    }
+    function passCreate() {
+        for (let i = 0; i < passLength; i++) {
+            
+        }
+    }
 
 generateBtn.addEventListener("click", testprompt);
 
@@ -37,6 +44,7 @@ generateBtn.addEventListener("click", testprompt);
 // Ensure each prompt is validated (possible ===, ||, &&, type stuff)
 // After all prompts, generate password based on answers.
 // Password gets displayed directly or through an ALERT.
+// NEW ISSUE: Allow user to cancel out of prompts.
 
 
 // ACCEPTANCE CRITERIA:
