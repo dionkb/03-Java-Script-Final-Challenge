@@ -3,28 +3,28 @@ var generateBtn = document.querySelector("#generate");
 
 // Declare variables to be used globally. 
 let passLength;
-let passLowercase;
-let passUppercase;
-let passNumeric;
-let passSpecial;
+// I may not need to declare these since they will be declared locally below.
+// let passLowercase;
+// let passUppercase;
+// let passNumeric;
+// let passSpecial;
 
-function testprompt()  {
+function generate() {
     while (isNaN(passLength) || passLength > 128 || passLength < 8) {
         passLength = prompt("How many characters does your password need to be? \n(Enter a number from 8 to 128)", "");
     }
+    console.log(passLength);
+    let passLowercase = confirm("Include lowercase characters? \nPress OK for yes, Cancel for no", "");
+    console.log(passLowercase);
+    let passUppercase = confirm("Include uppercase characters? \nPress OK for yes, Cancel for no", "");
+    console.log(passUppercase);
+    let passNumeric = confirm("Include numeric characters? \nPress OK for yes, Cancel for no", "");
+    console.log(passNumeric);
+    let passSpecial = confirm("Include special characters? (For example: !#$%&, etc.) \nPress OK for yes, Cancel for no", "");
+    console.log(passSpecial);
 }
-        // alert("Invalid input. Please enter a number from 8 to 128.");
-    // console.log(passLength);
-    // let passLowercase = confirm("Include lowercase characters? \nPress OK for yes, Cancel for no", "");
-    // console.log(passLowercase);
-    // let passUppercase = confirm("Include uppercase characters? \nPress OK for yes, Cancel for no", "");
-    // console.log(passUppercase);
-    // let passNumeric = confirm("Include numeric characters? \nPress OK for yes, Cancel for no", "");
-    // console.log(passNumeric);
-    // let passSpecial = confirm("Include special characters? (For example: !#$%&, etc.) \nPress OK for yes, Cancel for no", "");
-    // console.log(passSpecial);
 
-generateBtn.addEventListener("click", testprompt);
+generateBtn.addEventListener("click", generate);
 
 
 
@@ -34,7 +34,7 @@ generateBtn.addEventListener("click", testprompt);
 // FIXED! Add PROMPTs for password criteria:
 //    128 character > Length >= 8 characters
 //    Whether or not to include: lowercase, uppercase, numeric, or special chars.
-// Ensure each prompt is validated (possible ===, ||, &&, type stuff)
+// FIXED! Ensure each prompt is validated (possible ===, ||, &&, type stuff)
 // After all prompts, generate password based on answers.
 // Password gets displayed directly or through an ALERT.
 
