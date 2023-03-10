@@ -1,12 +1,12 @@
 // Declares a variable that will be used in conjunction with a mouse click
 // in a specified area of the HTML interface.
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Declare variables to be used globally. 
 let passLength = 0;
 let options = [];
-let password = "";
-let generatePassword = "";
+let password = '';
+let randomString =''
 
 // Main portion of code which controls the password generator function.
 function writePassword()  {
@@ -62,11 +62,19 @@ function writePassword()  {
 
     // This will allow the computer to choose from the "options" array at random
     // and the computer repeats the random selection "passLength" number of times.
-    for (i = 0; i < passLength; i++) {
-        var randomChar = Math.floor(Math.random() * options.length);
-        generatePassword += options[randomChar];
-        console.log(generatePassword);
+    function generatePassword() {
+        for (i = 0; i < passLength; i++) {
+        let randomChar = Math.floor(Math.random() * options.length);
+        randomString += options[randomChar];
+        }
     }
+    generatePassword();
+    let password = randomString;
+
+    // This will allow the randomly created string, password, to be displayed 
+    // to the user in the dialog box on screen
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
 }
 
 // Allows the user to click the button specified earlier, which will
@@ -84,31 +92,5 @@ generateBtn.addEventListener("click", writePassword);
 // FIXED! After all prompts, generate password based on answers.
 //      IDEAS: Build an array out of possible computer choices based on user input
 //      Ex: [a, b, c, Null,  etc, 1, 2, 3, etc., Null] = True, False, True, False
-// Password gets displayed directly or through an ALERT.
-// NEW ISSUE: Allow user to cancel out of prompts.
-
-
-// ACCEPTANCE CRITERIA:
-
-// GIVEN I need a new, secure password
-
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
-
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-
-// WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
+// FIXED! Password gets displayed directly or through an ALERT.
+// FIXED! NEW ISSUE: Allow user to cancel out of prompt first prompt.
