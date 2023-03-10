@@ -3,67 +3,78 @@
 var generateBtn = document.querySelector("#generate");
 
 // Declare variables to be used globally. 
-let passLength;
-let passLowercase;
-let passUppercase;
-let passNumeric;
-let passSpecial;
+let passLength = 0;
+let options = [];
 
+// Main portion of code which controls the password generator function.
 function writePassword()  {
+
+    // This asks the user how many characters they need the password to be.
     while (isNaN(passLength) || passLength > 128 || passLength < 8) {
         passLength = prompt("How many characters does your password need to be? \n(Enter a number from 8 to 128)", "");
+        if (passLength >= 8 && passLength <= 128 && typeof passLength == "number") {
+        } else if (passLength === null) {
+            return;
+        }
+    }    
+
+    // This asks if they need to include lowercase letters, and pushes the results
+    // to an array ("options") that is compiling all of the inputs.
+    let inclLow = confirm("Include lowercase characters? \nPress OK for yes, Cancel for no", "");
+    if (inclLow === true) {
+        let lower = "abcdefghijklmnopqrstuvwxyz".split('');
+        for (i = 0; i < lower.length; i++) {
+            options.push(lower[i]);
+        }
+    }
+
+    // This asks if they need to include uppercase letters, and pushes the results
+    // to an array "options" that is compiling all of the inputs.
+    let inclUp = confirm("Include uppercase characters? \nPress OK for yes, Cancel for no", "");
+    if (inclUp === true) {
+        let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+        for (i = 0; i < upper.length; i++) {
+            options.push(upper[i]);
+        }
+    }      
+
+    // This asks if they need to include numerals, and pushes the results
+    // to an array "options" that is compiling all of the inputs.
+    let inclNum = confirm("Include numeric characters? \nPress OK for yes, Cancel for no", "");
+    if (inclNum === true) {
+        let numerals = "1234567890".split('');
+        for (i = 0; i < numerals.length; i++) {
+            options.push(numerals[i]);
+        }
+    }
+
+    // This asks if they need to include special characters, and pushes the results
+    // to an array "options" that is compiling all of the inputs.
+    let inclSpec = confirm("Include special characters? \nPress OK for yes, Cancel for no", "");
+    if (inclNum === true) {
+        let special = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".split('');
+        for (i = 0; i < special.length; i++) {
+            options.push(special[i]);
+        }
     }
     console.log(passLength);
-    let passLowercase = confirm("Include lowercase characters? \nPress OK for yes, Cancel for no", "");
-    console.log(passLowercase);
-    if (passLowercase === true) {
-        let passLowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-        console.log(passLowercase);
-        } else (passLowercase = null);
-    let passUppercase = confirm("Include uppercase characters? \nPress OK for yes, Cancel for no", "");
-    console.log(passUppercase);
-    if (passUppercase === true) {
-        let passUppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',  'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-        console.log(passUppercase);
-        } else (passUppercase = null);
-    let passNumeric = confirm("Include numeric characters? \nPress OK for yes, Cancel for no", "");
-    console.log(passNumeric);
-    if (passNumeric === true) {
-        let passNumeric = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-        console.log(passNumeric);
-        } else (passNumeric = null);
-    let passSpecial = confirm("Include special characters? (For example: !#$%&, etc.) \nPress OK for yes, Cancel for no", "");
-    console.log(passSpecial);
-    if (passSpecial === true) {
-        let passSpecial = [' ', '!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
-        console.log(passSpecial);
-        } else (passSpecial = null);
-    }
-    // var password = generatePassword() {
-        // let possChars = [for (let i = 0; i < passLength; i++) {
-            
-        // }
-    // }
+    console.log(options);
+}
 
-
-    // var password = generatePassword();
-    // var passwordText = document.querySelector("#password");
-//   
-    // passwordText.value = password;
-
+// Allows the user to click the button specified earlier, which will
+// activate the writePassword function
 generateBtn.addEventListener("click", writePassword);
-
 
 
 // PLAN OF ATTACK:
 
 // FIXED! Button doesn't seem to activate anything, fix that
 // FIXED! Add PROMPTs for password criteria:
-//    128 character > Length >= 8 characters
-//    Whether or not to include: lowercase, uppercase, numeric, or special chars.
-// FIXED? Ensure each prompt is validated (possible ===, ||, &&, type stuff)
-// After all prompts, generate password based on answers.
-// IDEAS: Build an array out of possible computer choices based on user input
+//      128 character > Length >= 8 characters
+//      Whether or not to include: lowercase, uppercase, numeric, or special chars.
+// FIXED! Ensure each prompt is validated (possible ===, ||, &&, type stuff)
+// FIXED! After all prompts, generate password based on answers.
+//      IDEAS: Build an array out of possible computer choices based on user input
 //      Ex: [a, b, c, Null,  etc, 1, 2, 3, etc., Null] = True, False, True, False
 // Password gets displayed directly or through an ALERT.
 // NEW ISSUE: Allow user to cancel out of prompts.
