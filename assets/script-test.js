@@ -5,6 +5,8 @@ var generateBtn = document.querySelector("#generate");
 // Declare variables to be used globally. 
 let passLength = 0;
 let options = [];
+let password = "";
+let generatePassword = "";
 
 // Main portion of code which controls the password generator function.
 function writePassword()  {
@@ -57,8 +59,14 @@ function writePassword()  {
             options.push(special[i]);
         }
     }
-    console.log(passLength);
-    console.log(options);
+
+    // This will allow the computer to choose from the "options" array at random
+    // and the computer repeats the random selection "passLength" number of times.
+    for (i = 0; i < passLength; i++) {
+        var randomChar = Math.floor(Math.random() * options.length);
+        generatePassword += options[randomChar];
+        console.log(generatePassword);
+    }
 }
 
 // Allows the user to click the button specified earlier, which will
@@ -104,5 +112,3 @@ generateBtn.addEventListener("click", writePassword);
 
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
-
-
